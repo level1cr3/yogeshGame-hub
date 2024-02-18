@@ -1,0 +1,9 @@
+# this how mosh likes to organize his import statements.
+    1. first we import stuff from the react.
+    2. then we import stuff from the 3rd party library.
+    3. then finally our own import statements.
+
+# we will talk about 'providers' in next part of the course where we talk about more advance topics.    
+
+# notes : Every time mosh writes a bit of code. Before committing his changes he always reviews his code/changes in the source control tab of vs code.
+To make sure he has not made any mistake. to see if he has any opportunity to cleanup his code 
