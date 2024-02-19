@@ -7,3 +7,7 @@
 
 # notes : Every time mosh writes a bit of code. Before committing his changes he always reviews his code/changes in the source control tab of vs code.
 To make sure he has not made any mistake. to see if he has any opportunity to cleanup his code 
+
+
+# Always work on a small piece of functionality. Make sure it works then move on to next step. 
+Don't try to do too many things at once
