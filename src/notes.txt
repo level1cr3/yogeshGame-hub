@@ -11,3 +11,16 @@ To make sure he has not made any mistake. to see if he has any opportunity to cl
 
 # Always work on a small piece of functionality. Make sure it works then move on to next step. 
 Don't try to do too many things at once
+
+
+# Currently GameGrid component is involved in making http request. Currently knows type of request that we are making and knows about our endpoints.
+and future will also know of cancelling request using abort controller.
+This is something we don't want in our component. Because our 
+'component should be primarily responsible for returning markup and handling user interaction at high level'.
+
+Here we have 2 options 
+
+1) One way is to move logic for making http-request inside a service. (as we did in previous chapter)
+2) The other option is to move the entire logic (meaning state variables and useEffect) into a custom hook. 
+Hooks are not necessarily for sharing functionality across different components. We can also use them to separate concerns and make our code more 
+modular and reuseable 
