@@ -2,9 +2,10 @@ import { useEffect, useState } from "react";
 import apiClient from "../services/apiClient";
 import { AxiosError, CanceledError } from "axios";
 
-type Game = {
+export type Game = {
   id: number;
   name: string;
+  background_image: string;
 };
 
 type FetchGamesResponse = {
