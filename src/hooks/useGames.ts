@@ -2,10 +2,18 @@ import { useEffect, useState } from "react";
 import apiClient from "../services/apiClient";
 import { AxiosError, CanceledError } from "axios";
 
+export type Platform = {
+  id: number;
+  name: string;
+  slug: string;
+};
+
 export type Game = {
   id: number;
   name: string;
   background_image: string;
+  // parent_platform: Platform[]; // It is not platform array in the api. It should have been that but that is design smell then didn't design it properly
+  parent_platforms: { platform: Platform }[];
 };
 
 type FetchGamesResponse = {

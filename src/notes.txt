@@ -24,3 +24,8 @@ Here we have 2 options
 2) The other option is to move the entire logic (meaning state variables and useEffect) into a custom hook. 
 Hooks are not necessarily for sharing functionality across different components. We can also use them to separate concerns and make our code more 
 modular and reuseable 
+
+
+# To render the icons we need a mapping between name of platform and icon.
+> we don't wanna implement the mapping in GameCard Because that is a distraction from what this GameCard component is suppose to do.
+> so we will move entire logic for rendering the platform in separate component.
