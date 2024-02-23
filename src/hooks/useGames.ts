@@ -14,6 +14,7 @@ export type Game = {
   background_image: string;
   // parent_platform: Platform[]; // It is not platform array in the api. It should have been that but that is design smell then didn't design it properly
   parent_platforms: { platform: Platform }[];
+  metacritic: number;
 };
 
 type FetchGamesResponse = {
