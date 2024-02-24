@@ -34,3 +34,7 @@ modular and reuseable
 # what about the issue with code duplication ?
     > we don't wanna fix that in this commit. Since our application is already in the working state. We don't wanna risk breaking anything 
     what if refactoring doesn't work. so we should commit the working code first then work on fixing issue like refactoring.
+
+
+# Remove duplicate style : to remove duplicated style. we create react container component. That will have the common styles that are required 
+by GameCard and CardSkeleton and it will accept reactNode elements as children init.    
