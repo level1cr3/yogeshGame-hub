@@ -5,7 +5,7 @@ import CardSkeleton from "./CardSkeleton";
 import CardContainer from "./CardContainer";
 
 const GameGrid = () => {
-  const { games, error, isLoading } = useGames();
+  const { data, error, isLoading } = useGames();
   // to render a skeleton we need an array with let say 6 times
   const skeletons = [1, 2, 3, 4, 5, 6]; // we don't need state variable here because this is not something
   //that will change over time
@@ -20,7 +20,7 @@ const GameGrid = () => {
               <CardSkeleton />
             </CardContainer>
           ))}
-        {games.map((game) => (
+        {data.map((game) => (
           <CardContainer key={game.id}>
             <GameCard game={game} />
           </CardContainer>
