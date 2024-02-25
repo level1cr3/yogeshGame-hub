@@ -1,11 +1,14 @@
-import { HStack, Image, List, ListItem, Text } from "@chakra-ui/react";
+import { HStack, Image, List, ListItem, Spinner, Text } from "@chakra-ui/react";
 import useGenres from "../hooks/useGenres";
 import getCroppedImageUrl from "../services/imageUrl";
 
 const GenreList = () => {
-  const { data } = useGenres();
-  // don't wanna give padding to list. and instead will give the padding to aside container. So if there are other
-  // component below list they have the same padding as well.
+  const { data, isLoading, error } = useGenres();
+
+  if (error) return null;
+
+  if (isLoading) return <Spinner />;
+
   return (
     <List>
       {data.map((g) => (
