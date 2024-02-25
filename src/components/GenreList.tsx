@@ -1,16 +1,26 @@
+import { HStack, Image, List, ListItem, Text } from "@chakra-ui/react";
 import useGenres from "../hooks/useGenres";
+import getCroppedImageUrl from "../services/imageUrl";
 
 const GenreList = () => {
-  //const { data } = useData<Genre>("/genres"); // we cannot do this. Because our component should not know about the endpoints.
-  // our component should not know anything about making http request.
-
   const { data } = useGenres();
+  // don't wanna give padding to list. and instead will give the padding to aside container. So if there are other
+  // component below list they have the same padding as well.
   return (
-    <ul>
+    <List>
       {data.map((g) => (
-        <li key={g.id}>{g.name}</li>
+        <ListItem key={g.id} paddingY="5px">
+          <HStack>
+            <Image
+              boxSize="32px"
+              src={getCroppedImageUrl(g.image_background)}
+              borderRadius={8}
+            />
+            <Text fontSize="lg">{g.name}</Text>
+          </HStack>
+        </ListItem>
       ))}
-    </ul>
+    </List>
   );
 };
 
