@@ -3,9 +3,14 @@ import useGames from "../hooks/useGames";
 import GameCard from "./GameCard";
 import CardSkeleton from "./CardSkeleton";
 import CardContainer from "./CardContainer";
+import { Genre } from "../hooks/useGenres";
 
-const GameGrid = () => {
-  const { data, error, isLoading } = useGames();
+type Props = {
+  selectedGenre: Genre | null;
+};
+
+const GameGrid = ({ selectedGenre }: Props) => {
+  const { data, error, isLoading } = useGames(selectedGenre);
   // to render a skeleton we need an array with let say 6 times
   const skeletons = [1, 2, 3, 4, 5, 6]; // we don't need state variable here because this is not something
   //that will change over time

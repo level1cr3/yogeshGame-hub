@@ -38,3 +38,17 @@ modular and reuseable
 
 # Remove duplicate style : to remove duplicated style. we create react container component. That will have the common styles that are required 
 by GameCard and CardSkeleton and it will accept reactNode elements as children init.    
+
+
+# Get Games by Genre :
+
+> In our genreList component we added a new prop called onSelectGenre. This to notify the consumer of this component that a genre has been selected.
+in our case the consumer of genreList component is app component. here we get notified and we setSelectedGenre. and this causes app component to 
+re-render. So in the next render we will pass the GameGrid component the selectedGenre value.
+
+> In GameGrid we added a new prop which is selectedGenre. and passed it to our useGames hook.
+
+> useGames hook passes the selected genre as query-string parameter to the useData hook
+
+> as part of this lesson we had to open our useData hook and make it more flexible. now we can pass request config object and dependency array to 
+useData hook
