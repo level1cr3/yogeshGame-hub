@@ -15,15 +15,21 @@ export type Game = {
   metacritic: number;
 };
 
-const useGames = (selectedGenre: Genre | null) =>
+type Props = {
+  selectedGenre: Genre | null;
+  selectedPlatform: Platform | null;
+};
+
+const useGames = ({ selectedGenre, selectedPlatform }: Props) =>
   useData<Game>(
     "/games",
     {
       params: {
         genres: selectedGenre?.id,
+        parent_platforms: selectedPlatform?.id,
       },
     },
-    [selectedGenre?.id]
+    [selectedGenre?.id, selectedPlatform?.id]
   );
 
 export default useGames;
