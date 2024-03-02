@@ -52,3 +52,17 @@ re-render. So in the next render we will pass the GameGrid component the selecte
 
 > as part of this lesson we had to open our useData hook and make it more flexible. now we can pass request config object and dependency array to 
 useData hook
+
+
+# refactoring : 
+> In app component Currently we have 2 state variables (selectedGenre,selectedPlatform ). But as we add more features we would need even more variables for tracking things
+like sort order or search phrases.
+
+> adding bunch of variables and passing them around. is ugly and causes clutter in our code makes it hard to read.
+
+>> So what can we do here ?
+    > we should pack related variables inside an object
+    > So here we will use what we call a 'query object pattern'
+    > so we will create a query object that contains all the information we need to query the games.
+
+ 

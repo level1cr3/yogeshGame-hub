@@ -1,20 +1,18 @@
 import { SimpleGrid, Text } from "@chakra-ui/react";
-import useGames, { Platform } from "../hooks/useGames";
+import useGames from "../hooks/useGames";
 import GameCard from "./GameCard";
 import CardSkeleton from "./CardSkeleton";
 import CardContainer from "./CardContainer";
-import { Genre } from "../hooks/useGenres";
+import { GameQuery } from "../App";
 
 type Props = {
-  selectedGenre: Genre | null;
-  selectedPlatform: Platform | null;
+  gameQuery: GameQuery;
 };
 
-const GameGrid = (gameFilter: Props) => {
-  const { data, error, isLoading } = useGames(gameFilter);
-  // to render a skeleton we need an array with let say 6 times
-  const skeletons = [1, 2, 3, 4, 5, 6]; // we don't need state variable here because this is not something
-  //that will change over time
+const GameGrid = ({ gameQuery }: Props) => {
+  const { data, error, isLoading } = useGames(gameQuery);
+
+  const skeletons = [1, 2, 3, 4, 5, 6];
 
   return (
     <>
