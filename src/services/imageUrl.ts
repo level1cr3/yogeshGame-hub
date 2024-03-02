@@ -1,7 +1,7 @@
-// it would be nice to provide. width and height as an argument. But we cannot do that Because backend is not setup in
-// that way.
+import noImage from "../assets/no-image-placeholder.webp";
+
 const getCroppedImageUrl = (url: string) => {
-  if (!url) return "";
+  if (!url) return noImage; // we cannot give direct image path over here.
   const target = "media/";
   const index = url.indexOf(target) + target.length;
   return `${url.slice(0, index)}crop/600/400/${url.slice(index)}`;
