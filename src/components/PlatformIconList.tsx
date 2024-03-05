@@ -22,7 +22,7 @@ type Props = {
 
 // to map name of each platform with its icon. For that we won't write bunch  of if statements thats ugly. Instead we should use object as a map.
 
-const PlatformIconList = ({ platforms }: Props) => {
+const PlatformIconList = ({ platforms = [] }: Props) => {
   // In this iconMap obj we will have keys that represent slug of each platform.
   // each platform has
   // name : PlayStation
