@@ -24,6 +24,8 @@ const useGames = (gameQuery: GameQuery) =>
           parent_platforms: gameQuery.platform?.id,
           ordering: gameQuery.sortOrder,
           search: gameQuery.searchText,
+          page: gameQuery.page,
+          page_size: gameQuery.page_size,
         },
       }),
   });
