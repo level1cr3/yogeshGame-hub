@@ -1,32 +1,38 @@
-import { Box, Button, SimpleGrid, Text } from "@chakra-ui/react";
-import useGames from "../hooks/useGames";
-import GameCard from "./GameCard";
-import CardSkeleton from "./CardSkeleton";
-import CardContainer from "./CardContainer";
+import { SimpleGrid, Spinner, Text } from "@chakra-ui/react";
+import { Fragment } from "react";
+import InfiniteScroll from "react-infinite-scroll-component";
 import { GameQuery } from "../App";
-import { Fragment, useState } from "react";
+import useGames from "../hooks/useGames";
+import CardContainer from "./CardContainer";
+import CardSkeleton from "./CardSkeleton";
+import GameCard from "./GameCard";
 
 type Props = {
   gameQuery: GameQuery;
 };
 
 const GameGrid = ({ gameQuery }: Props) => {
-  const {
-    data,
-    error,
-    isLoading,
-    fetchNextPage,
-    isFetchingNextPage,
-    hasNextPage,
-  } = useGames(gameQuery);
-
-  const skeletons = [1, 2, 3, 4, 5, 6, 7, 8];
+  const { data, error, isLoading, fetchNextPage, hasNextPage } =
+    useGames(gameQuery);
 
   if (error) return <Text colorScheme="red">{error.message}</Text>;
 
+  const skeletons = [1, 2, 3, 4, 5, 6, 7, 8];
+  const fetchedGamesCount =
+    data?.pages.reduce((total, page) => total + page.count, 0) || 0;
+
   return (
-    <Box padding="10px">
-      <SimpleGrid columns={{ sm: 1, md: 2, lg: 3, xl: 4 }} spacing={6}>
+    <InfiniteScroll
+      dataLength={fetchedGamesCount} // set it to total number of items we have fetched so far.
+      next={fetchNextPage}
+      hasMore={hasNextPage}
+      loader={<Spinner />}
+    >
+      <SimpleGrid
+        columns={{ sm: 1, md: 2, lg: 3, xl: 4 }}
+        spacing={6}
+        padding="10px"
+      >
         {isLoading &&
           skeletons.map((i) => (
             <CardContainer key={i}>
@@ -43,17 +49,7 @@ const GameGrid = ({ gameQuery }: Props) => {
           </Fragment>
         ))}
       </SimpleGrid>
-
-      {hasNextPage && (
-        <Button
-          isDisabled={isFetchingNextPage}
-          onClick={() => fetchNextPage()}
-          marginY={5}
-        >
-          {isFetchingNextPage ? "Loading..." : "Load more"}
-        </Button>
-      )}
-    </Box>
+    </InfiniteScroll>
   );
 };
 
