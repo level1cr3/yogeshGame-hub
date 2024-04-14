@@ -66,3 +66,15 @@ like sort order or search phrases.
     > so we will create a query object that contains all the information we need to query the games.
 
  
+
+===========================================================================================================================>
+#Discussion : Building reuseable components
+
+> with zustand in place each component. retrieves the pieces of state that it needs. Directly from the store. 
+    While this simplifies our code. It makes our component less re-useable Because they rely on store existence to function.
+    In contrast passing data via props can make our component more self-contained and re-useable Because they don't rely on external data source.
+    In this case it is unlikely that we are gonna reuse any of the component we have refactored.
+
+"There is no one-size-fits-all" solution in managing data flow in the react.
+
+"Choose the right solution based on the project's needs"
