@@ -1,8 +1,8 @@
-import { GameQuery } from "../App";
-import { Platform } from "./usePlatforms";
-import ApiClient, { FetchResponse } from "../services/apiClient";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import ms from "ms";
+import ApiClient, { FetchResponse } from "../services/apiClient";
+import useGameQueryStore from "../store";
+import { Platform } from "./usePlatforms";
 
 export type Game = {
   id: number;
@@ -15,8 +15,11 @@ export type Game = {
 
 const apiClient = new ApiClient<Game>("/games");
 
-const useGames = (gameQuery: GameQuery) =>
-  useInfiniteQuery<FetchResponse<Game>, Error>({
+const useGames = () => {
+  const gameQuery = useGameQueryStore((s) => s.gameQuery); // in useGames we have dependency to gameQuery object.
+  //So anytime any value in this object changes we want this to execute
+
+  return useInfiniteQuery<FetchResponse<Game>, Error>({
     queryKey: ["games", gameQuery],
     queryFn: ({ pageParam }) =>
       apiClient.getAll({
@@ -34,5 +37,6 @@ const useGames = (gameQuery: GameQuery) =>
       lastPage.next ? allPages.length + 1 : undefined,
     staleTime: ms("24h"),
   });
+};
 
 export default useGames;
