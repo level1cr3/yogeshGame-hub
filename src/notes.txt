@@ -78,3 +78,16 @@ like sort order or search phrases.
 "There is no one-size-fits-all" solution in managing data flow in the react.
 
 "Choose the right solution based on the project's needs"
+
+===============================================================================================================================>
+
+# Routing with react router.
+    > for routing we will use popular library called react router. what we will learn is :
+
+        > Setting up routes.
+        > Handling errors.
+        > Navigating between pages.
+        > dynamic routes.
+        > nested routes.
+        > Private routes.
+
