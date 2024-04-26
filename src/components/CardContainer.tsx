@@ -11,7 +11,14 @@ const CardContainer = ({ children }: Props) => {
   // which made our card with image. grow and skeleton that didn't have any image shrink. but now that. aside grid
   // container has fixed width of 200px we can remove width 300px from card container.
   return (
-    <Box borderRadius={10} overflow="hidden">
+    <Box
+      borderRadius={10}
+      overflow="hidden"
+      _hover={{
+        transform: "scale(1.03)",
+        transition: "transform .20s ease-in",
+      }}
+    >
       {children}
     </Box>
   );
