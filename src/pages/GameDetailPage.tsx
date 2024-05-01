@@ -2,11 +2,12 @@ import { Heading, Spinner } from "@chakra-ui/react";
 import { useParams } from "react-router-dom";
 import ExpandableText from "../components/ExpandableText";
 import GameAttribute from "../components/GameAttribute";
-import useGameDetail from "../hooks/useGameDetail";
+import GameTrailer from "../components/GameTrailer";
+import useGame from "../hooks/useGame";
 
 const GameDetailPage = () => {
   const { slug } = useParams();
-  const { data: game, isLoading, error } = useGameDetail(slug!); // we know slug will never be. Because if it is null we will never reach this page as per our route config
+  const { data: game, isLoading, error } = useGame(slug!); // we know slug will never be. Because if it is null we will never reach this page as per our route config
 
   if (isLoading) return <Spinner />;
 
@@ -19,6 +20,7 @@ const GameDetailPage = () => {
       <Heading>{game.name}</Heading>
       <ExpandableText maxChar={300}>{game.description_raw}</ExpandableText>
       <GameAttribute game={game} />
+      <GameTrailer gameId={game.id} />
     </>
   );
 };

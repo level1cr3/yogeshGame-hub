@@ -4,10 +4,10 @@ import { Game } from "../entities/Game";
 
 const apiClient = new ApiClient<Game>("/games");
 
-const useGameDetail = (slug: string) =>
+const useGame = (slug: string) =>
   useQuery<Game, Error>({
     queryKey: ["game", slug],
     queryFn: () => apiClient.get(slug),
   });
 
-export default useGameDetail;
+export default useGame;
